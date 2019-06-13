@@ -1,0 +1,189 @@
+﻿
+@{
+    ViewBag.Title = "chitiet";
+}
+
+@using QuanLiWeb.Models
+
+<!DOCTYPE html>
+<!-- saved from url=(0084)file:///C:/Users/Vu%20Duc%20Tinh/Downloads/bao_cao_web//mtaphim/video/acquymaso.html -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<base>--><!--<base href=".">-->
+</head>
+<body>
+    <div id="wrapper">
+        <div id="container">
+            <div class="breadcrumbs">
+                <div xmlns:v="http://rdf.data-vocabulary.org/#">
+                    <span typeof="v:Breadcrumb">
+                        <a property="v:title">@Model.TenPhim</a>
+                    </span>
+                    <form asp-controller="Home" asp-action="timkiem" method="get">
+                        <p>
+                            Tìm kiếm: <input type="text" name="search">
+                            <input type="submit" value="Filter" />
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div id="video" class="play-left" data-id="1268" data-sv="1" style="border-right: 1px solid rgb(43, 43, 43); min-width: 650px;">
+                <div class="desktop video-player" style="min-width: 650px; min-height: 354px;">
+                    <div class="intrinsic-container intrinsic-container-16x9">
+                        <iframe src="~/Content/video/AQUAMAN- ĐẾ VƯƠNG ATLANTIS EXTENDED TRAILER - KC 21.12.2018.mp4" scrolling="no" frameborder="0" width="100%" height="100%" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                    </div>
+                </div>
+                <div class="toolbar">
+                    <ul style="float: left; width:65%">
+                        <li id="server1" class="video-server bt_normal" onclick="server(1,1268)"><span class="server">#2	</span></li>
+                        <li class="video-server bt_normal zoom"><span class="icon-tool server">Zoom+</span></li>
+                    </ul>
+                    <div style="float:right">
+                        <div class="download-button"></div>
+                        <span class="likes"><span>8,030</span><img src="~/Content/img/like.png" height="17" width="17"></span>
+                    </div>
+                    <div class="clr"></div>
+                    <div id="download"></div>
+                </div>
+                <div class="note"><font style="color:#de2600;">MTAMOVIE</font></div>
+                <div class="status">
+                    <p>- Khi bạn tua phim có thể <font style="color:#de2600; opacity: 0.7;">load chậm</font>, vui lòng đợt một chút.</p>
+                </div>
+                <div class="video-content">
+                    <div class="content">@Model.NoiDung</div>
+                    <div class="clr"></div>
+                    <div class="lbox">
+                        <div class="lcol"><img src="~/Content/image/@Model.TenAnh" alt="" width="230" height="172"></div>
+                        <div class="rcol">
+                            <div class="tags">
+                                <a href="#" title="@ViewData["key"]">@ViewData["key"]</a>&nbsp;
+                                <a href="#" title="">ĐIỂM IMDB: @Model.diemphim</a>&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="play-right" style="display: block;">
+                <center>
+                    <script src="file:///C:/Users/Vu%20Duc%20Tinh/Downloads/bao_cao_web///phim1/phim/sitetools.info/s4t.js"></script><div id="_341"></div>
+                </center>
+
+                <ul class="video-right">
+                    <div class="breadcrumbs">Top LIKE</div>
+                    <li class="video-list">
+                        <a title="Aquaman" href="@Url.Action("chitiet","Home",new { @id=5})">
+                            <img class="video-image" src="~/Content/image/Aquaman.jpg" alt="Aquaman">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="Aquaman" href="@Url.Action("chitiet","Home",new { @id=5})">Aquaman</a>
+                        </h2>
+                    </li>
+                    <li class="video-list">
+                        <a title="Black panther" href="@Url.Action("chitiet","Home",new { @id=11})">
+                            <img class="video-image" src="~/Content/image/black_panther_poster.jpg" alt="Black panther">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="Black panther" href="@Url.Action("chitiet","Home",new { @id=11})">Black panther</a>
+                        </h2>
+                    </li>
+                    <li class="video-list">
+                        <a title="Avengers infinity war" href="@Url.Action("chitiet","Home",new { @id=6})">
+                            <img class="video-image" src="~/Content/image/Avanger2.jpg" alt="Avengers infinity war">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="Avengers infinity war" href="@Url.Action("chitiet","Home",new { @id=6})">Avengers infinity war</a>
+                        </h2>
+                    </li>
+                    <li class="video-list">
+                        <a title="Gia đình siêu nhân" href="@Url.Action("chitiet","Home",new { @id=25})">
+                            <img class="video-image" src="~/Content/image/incredibles.jpg" alt="Gia đình siêu nhân">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="Gia đình siêu nhân" href="@Url.Action("chitiet","Home",new { @id=25})">Gia đình siêu nhân</a>
+                        </h2>
+                    </li>
+                </ul>
+            </div>
+            <div class="clr"></div>
+            <div class="box">
+                <div class="breadcrumbs">PHIM ĐỀ XUẤT</div>
+                <ul id="toottip">
+                    <li class="video-list">
+                        <a title="AINBO: LINH HỒN CỦA AMAZON" href="@Url.Action("chitiet","Home",new { @id=2})">
+                            <img class="video-image" src="~/Content/image/3.jpg" alt="AINBO: LINH HỒN CỦA AMAZON">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="AINBO: LINH HỒN CỦA AMAZON" href="@Url.Action("chitiet","Home",new { @id=2})">AINBO: LINH HỒN CỦA AMAZON</a>
+                        </h2>
+                    </li>
+                    <li class="video-list">
+                        <a title="Venom" href="@Url.Action("chitiet","Home",new { @id=47})">
+                            <img class="video-image" src="~/Content/image/venom.jpg" alt="Venom">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="Venom" href="@Url.Action("chitiet","Home",new { @id=47})">Venom</a>
+                        </h2>
+                    </li>
+                    <li class="video-list">
+                        <a title="siêu thú cuồng nộ" href="@Url.Action("chitiet","Home",new { @id=41})">
+                            <img class="video-image" src="~/Content/image/Rampage.jpg" alt="siêu thú cuồng nộ">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="siêu thú cuồng nộ" href="@Url.Action("chitiet","Home",new { @id=41})">siêu thú cuồng nộ</a>
+                        </h2>
+                    </li>
+                    <li class="video-list">
+                        <a title="Deadpool 2" href="@Url.Action("chitiet","Home",new { @id=21})">
+                            <img class="video-image" src="~/Content/image/deadpool2.jpg" alt="Deadpool 2">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="Deadpool 2" href="@Url.Action("chitiet","Home",new { @id=21})">Deadpool 2</a>
+                        </h2>
+                    </li>
+                    <li class="video-list">
+                        <a title="Người Sắt" href="@Url.Action("chitiet","Home",new { @id=32})">
+                            <img class="video-image" src="~/Content/image/aa.jpg" alt="Người Sắt">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="Người Sắt" href="@Url.Action("chitiet","Home",new { @id=32})">Người Sắt</a>
+                        </h2>
+                    </li>
+                    <li class="video-list">
+                        <a title="Xóm trọ 3D" href="@Url.Action("chitiet","Home",new { @id=54})">
+                            <img class="video-image" src="~/Content/image/xomtro3d.jpg" alt="Xóm trọ 3D">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="Xóm trọ 3D" href="@Url.Action("chitiet","Home",new { @id=54})">Xóm trọ 3D</a>
+                        </h2>
+                    </li>
+                    <li class="video-list">
+                        <a title="Về quê ăn Tết" href="@Url.Action("chitiet","Home",new { @id=48})">
+                            <img class="video-image" src="~/Content/image/vequeantet.jpg" alt="Về quê ăn Tết">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="Về quê ăn Tết" href="@Url.Action("chitiet","Home",new { @id=48})">Về quê ăn Tết</a>
+                        </h2>
+                    </li>
+                    <li class="video-list">
+                        <a title="Giải mã mê cung" href="@Url.Action("chitiet","Home",new { @id=27})">
+                            <img class="video-image" src="~/Content/image/preview.medium.jpg" alt="Giải mã mê cung">
+                        </a>
+                        <h2 class="video-name">
+                            <a title="Giải mã mê cung" href="@Url.Action("chitiet","Home",new { @id=27})">Giải mã mê cung</a>
+                        </h2>
+                    </li>
+                </ul>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+        <script>
+            getLikes()
+        </script>
+    </div>
+</body>
+</html>
+
+
+

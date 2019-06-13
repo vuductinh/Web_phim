@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataWeb1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Anh">
+    <Key>
+      <PropertyRef Name="MaAnh" />
+    </Key>
+    <Property Name="MaAnh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaPhim" Type="int" />
+    <Property Name="TenAnh" Type="ntext" />
+  </EntityType>
+  <EntityType Name="nhanxetphim">
+    <Key>
+      <PropertyRef Name="stt" />
+    </Key>
+    <Property Name="stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="50" />
+    <Property Name="noidung" Type="nvarchar" MaxLength="50" />
+    <Property Name="maphim" Type="int" />
+  </EntityType>
+  <EntityType Name="Phim">
+    <Key>
+      <PropertyRef Name="MaPhim" />
+    </Key>
+    <Property Name="MaPhim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenPhim" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenAnh" Type="ntext" />
+    <Property Name="NoiDung" Type="ntext" />
+    <Property Name="DienVien" Type="nvarchar" MaxLength="100" />
+    <Property Name="LinkPhim" Type="char" MaxLength="200" />
+    <Property Name="LinkVideo" Type="ntext" />
+    <Property Name="MaTheLoai" Type="int" />
+    <Property Name="diemphim" Type="float" />
+  </EntityType>
+  <EntityType Name="taikhoan">
+    <Key>
+      <PropertyRef Name="stt" />
+    </Key>
+    <Property Name="stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tentk" Type="nvarchar" MaxLength="200" />
+    <Property Name="matkhau" Type="nvarchar" MaxLength="200" />
+    <Property Name="email" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TheLoai">
+    <Key>
+      <PropertyRef Name="MaTheLoai" />
+    </Key>
+    <Property Name="MaTheLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenTheLoai" Type="nvarchar" MaxLength="25" />
+    <Property Name="link" Type="char" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Anh__MaPhim__44FF419A">
+    <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+    <End Role="Anh" Type="Self.Anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phim">
+        <PropertyRef Name="MaPhim" />
+      </Principal>
+      <Dependent Role="Anh">
+        <PropertyRef Name="MaPhim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__nhanxetph__maphi__49C3F6B7">
+    <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+    <End Role="nhanxetphim" Type="Self.nhanxetphim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phim">
+        <PropertyRef Name="MaPhim" />
+      </Principal>
+      <Dependent Role="nhanxetphim">
+        <PropertyRef Name="maphim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Phim__MaTheLoai__4222D4EF">
+    <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="0..1" />
+    <End Role="Phim" Type="Self.Phim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TheLoai">
+        <PropertyRef Name="MaTheLoai" />
+      </Principal>
+      <Dependent Role="Phim">
+        <PropertyRef Name="MaTheLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="f_timkiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="_timkiem">
+    <Parameter Name="ten" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="DataWeb1ModelStoreContainer">
+    <EntitySet Name="Anh" EntityType="Self.Anh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nhanxetphim" EntityType="Self.nhanxetphim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Phim" EntityType="Self.Phim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="taikhoan" EntityType="Self.taikhoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TheLoai" EntityType="Self.TheLoai" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Anh__MaPhim__44FF419A" Association="Self.FK__Anh__MaPhim__44FF419A">
+      <End Role="Phim" EntitySet="Phim" />
+      <End Role="Anh" EntitySet="Anh" />
+    </AssociationSet>
+    <AssociationSet Name="FK__nhanxetph__maphi__49C3F6B7" Association="Self.FK__nhanxetph__maphi__49C3F6B7">
+      <End Role="Phim" EntitySet="Phim" />
+      <End Role="nhanxetphim" EntitySet="nhanxetphim" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Phim__MaTheLoai__4222D4EF" Association="Self.FK__Phim__MaTheLoai__4222D4EF">
+      <End Role="TheLoai" EntitySet="TheLoai" />
+      <End Role="Phim" EntitySet="Phim" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

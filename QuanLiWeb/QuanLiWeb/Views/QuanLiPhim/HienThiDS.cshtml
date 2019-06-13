@@ -1,0 +1,64 @@
+﻿@model IEnumerable<QuanLiWeb.Models.Phim>
+
+@{
+    ViewBag.Title = "HienThiDS";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div class="container">
+    <div class="heading">
+<h2>
+    Danh sách phim
+</h2>
+    </div>
+<div class="content">
+<p>
+    @Html.ActionLink("Thêm Mới", "ThemMoi")
+</p>
+<table >
+    <tr>
+        <th>
+            Mã Phim
+        </th>
+        <th>
+            Tên Phim
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+            Thể loại
+        </th>
+        <th>
+           Điểm phim
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaPhim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenPhim)
+        </td>
+        <td>
+                <img id="img1" src="~/Content/image/@Html.DisplayFor(modelItem=>item.TenAnh)">
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TheLoai.TenTheLoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.diemphim)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh Sửa", "ChinhSua", new {@Maphimsua = item.MaPhim }) |
+            @Html.ActionLink("Chi Tiết", "Chitiet", new { @Map=item.MaPhim }) |
+            @Html.ActionLink("Xóa", "Xoa", new { @MaP = item.MaPhim })
+        </td>
+    </tr>
+}
+
+</table>
+    </div>
+</div>

@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataWeb1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Anh">
+          <Key>
+            <PropertyRef Name="MaAnh" />
+          </Key>
+          <Property Name="MaAnh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaPhim" Type="int" />
+          <Property Name="TenAnh" Type="ntext" />
+        </EntityType>
+        <EntityType Name="nhanxetphim">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ten" Type="nvarchar" MaxLength="50" />
+          <Property Name="noidung" Type="nvarchar" MaxLength="50" />
+          <Property Name="maphim" Type="int" />
+        </EntityType>
+        <EntityType Name="Phim">
+          <Key>
+            <PropertyRef Name="MaPhim" />
+          </Key>
+          <Property Name="MaPhim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenPhim" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenAnh" Type="ntext" />
+          <Property Name="NoiDung" Type="ntext" />
+          <Property Name="DienVien" Type="nvarchar" MaxLength="100" />
+          <Property Name="LinkPhim" Type="char" MaxLength="200" />
+          <Property Name="LinkVideo" Type="ntext" />
+          <Property Name="MaTheLoai" Type="int" />
+          <Property Name="diemphim" Type="float" />
+        </EntityType>
+        <EntityType Name="taikhoan">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tentk" Type="nvarchar" MaxLength="200" />
+          <Property Name="matkhau" Type="nvarchar" MaxLength="200" />
+          <Property Name="email" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TheLoai">
+          <Key>
+            <PropertyRef Name="MaTheLoai" />
+          </Key>
+          <Property Name="MaTheLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTheLoai" Type="nvarchar" MaxLength="25" />
+          <Property Name="link" Type="char" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Anh__MaPhim__44FF419A">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="Anh" Type="Self.Anh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="MaPhim" />
+            </Principal>
+            <Dependent Role="Anh">
+              <PropertyRef Name="MaPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__nhanxetph__maphi__49C3F6B7">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="nhanxetphim" Type="Self.nhanxetphim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="MaPhim" />
+            </Principal>
+            <Dependent Role="nhanxetphim">
+              <PropertyRef Name="maphim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phim__MaTheLoai__4222D4EF">
+          <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="0..1" />
+          <End Role="Phim" Type="Self.Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheLoai">
+              <PropertyRef Name="MaTheLoai" />
+            </Principal>
+            <Dependent Role="Phim">
+              <PropertyRef Name="MaTheLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="f_timkiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="_timkiem">
+          <Parameter Name="ten" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DataWeb1ModelStoreContainer">
+          <EntitySet Name="Anh" EntityType="Self.Anh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nhanxetphim" EntityType="Self.nhanxetphim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phim" EntityType="Self.Phim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="taikhoan" EntityType="Self.taikhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TheLoai" EntityType="Self.TheLoai" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Anh__MaPhim__44FF419A" Association="Self.FK__Anh__MaPhim__44FF419A">
+            <End Role="Phim" EntitySet="Phim" />
+            <End Role="Anh" EntitySet="Anh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__nhanxetph__maphi__49C3F6B7" Association="Self.FK__nhanxetph__maphi__49C3F6B7">
+            <End Role="Phim" EntitySet="Phim" />
+            <End Role="nhanxetphim" EntitySet="nhanxetphim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phim__MaTheLoai__4222D4EF" Association="Self.FK__Phim__MaTheLoai__4222D4EF">
+            <End Role="TheLoai" EntitySet="TheLoai" />
+            <End Role="Phim" EntitySet="Phim" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DataWeb1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Anh">
+          <Key>
+            <PropertyRef Name="MaAnh" />
+          </Key>
+          <Property Name="MaAnh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaPhim" Type="Int32" />
+          <Property Name="TenAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Phim" Relationship="Self.FK__Anh__MaPhim__44FF419A" FromRole="Anh" ToRole="Phim" />
+        </EntityType>
+        <EntityType Name="nhanxetphim">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noidung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="maphim" Type="Int32" />
+          <NavigationProperty Name="Phim" Relationship="Self.FK__nhanxetph__maphi__49C3F6B7" FromRole="nhanxetphim" ToRole="Phim" />
+        </EntityType>
+        <EntityType Name="Phim">
+          <Key>
+            <PropertyRef Name="MaPhim" />
+          </Key>
+          <Property Name="MaPhim" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenPhim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienVien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LinkPhim" Type="String" MaxLength="200" FixedLength="true" Unicode="false" />
+          <Property Name="LinkVideo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaTheLoai" Type="Int32" />
+          <Property Name="diemphim" Type="Double" />
+          <NavigationProperty Name="Anhs" Relationship="Self.FK__Anh__MaPhim__44FF419A" FromRole="Phim" ToRole="Anh" />
+          <NavigationProperty Name="nhanxetphims" Relationship="Self.FK__nhanxetph__maphi__49C3F6B7" FromRole="Phim" ToRole="nhanxetphim" />
+          <NavigationProperty Name="TheLoai" Relationship="Self.FK__Phim__MaTheLoai__4222D4EF" FromRole="Phim" ToRole="TheLoai" />
+        </EntityType>
+        <EntityType Name="taikhoan">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tentk" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="matkhau" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TheLoai">
+          <Key>
+            <PropertyRef Name="MaTheLoai" />
+          </Key>
+          <Property Name="MaTheLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTheLoai" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Phims" Relationship="Self.FK__Phim__MaTheLoai__4222D4EF" FromRole="TheLoai" ToRole="Phim" />
+        </EntityType>
+        <Association Name="FK__Anh__MaPhim__44FF419A">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="Anh" Type="Self.Anh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="MaPhim" />
+            </Principal>
+            <Dependent Role="Anh">
+              <PropertyRef Name="MaPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__nhanxetph__maphi__49C3F6B7">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="nhanxetphim" Type="Self.nhanxetphim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="MaPhim" />
+            </Principal>
+            <Dependent Role="nhanxetphim">
+              <PropertyRef Name="maphim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phim__MaTheLoai__4222D4EF">
+          <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="0..1" />
+          <End Role="Phim" Type="Self.Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheLoai">
+              <PropertyRef Name="MaTheLoai" />
+            </Principal>
+            <Dependent Role="Phim">
+              <PropertyRef Name="MaTheLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataWebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Anhs" EntityType="Self.Anh" />
+          <EntitySet Name="nhanxetphims" EntityType="Self.nhanxetphim" />
+          <EntitySet Name="Phims" EntityType="Self.Phim" />
+          <EntitySet Name="taikhoans" EntityType="Self.taikhoan" />
+          <EntitySet Name="TheLoais" EntityType="Self.TheLoai" />
+          <AssociationSet Name="FK__Anh__MaPhim__44FF419A" Association="Self.FK__Anh__MaPhim__44FF419A">
+            <End Role="Phim" EntitySet="Phims" />
+            <End Role="Anh" EntitySet="Anhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__nhanxetph__maphi__49C3F6B7" Association="Self.FK__nhanxetph__maphi__49C3F6B7">
+            <End Role="Phim" EntitySet="Phims" />
+            <End Role="nhanxetphim" EntitySet="nhanxetphims" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phim__MaTheLoai__4222D4EF" Association="Self.FK__Phim__MaTheLoai__4222D4EF">
+            <End Role="TheLoai" EntitySet="TheLoais" />
+            <End Role="Phim" EntitySet="Phims" />
+          </AssociationSet>
+          <FunctionImport Name="f_timkiem" ReturnType="Collection(DataWeb1Model.f_timkiem_Result)">
+          <Parameter Name="ten" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="f_timkiem_Result">
+          <Property Type="Int32" Name="MaPhim" Nullable="false" />
+          <Property Type="String" Name="TenPhim" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TenAnh" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="NoiDung" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="DienVien" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LinkPhim" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="LinkVideo" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="MaTheLoai" Nullable="true" />
+          <Property Type="Double" Name="diemphim" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DataWeb1ModelStoreContainer" CdmEntityContainer="DataWebEntities">
+          <EntitySetMapping Name="Anhs">
+            <EntityTypeMapping TypeName="DataWeb1Model.Anh">
+              <MappingFragment StoreEntitySet="Anh">
+                <ScalarProperty Name="MaAnh" ColumnName="MaAnh" />
+                <ScalarProperty Name="MaPhim" ColumnName="MaPhim" />
+                <ScalarProperty Name="TenAnh" ColumnName="TenAnh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nhanxetphims">
+            <EntityTypeMapping TypeName="DataWeb1Model.nhanxetphim">
+              <MappingFragment StoreEntitySet="nhanxetphim">
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="noidung" ColumnName="noidung" />
+                <ScalarProperty Name="maphim" ColumnName="maphim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phims">
+            <EntityTypeMapping TypeName="DataWeb1Model.Phim">
+              <MappingFragment StoreEntitySet="Phim">
+                <ScalarProperty Name="MaPhim" ColumnName="MaPhim" />
+                <ScalarProperty Name="TenPhim" ColumnName="TenPhim" />
+                <ScalarProperty Name="TenAnh" ColumnName="TenAnh" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="DienVien" ColumnName="DienVien" />
+                <ScalarProperty Name="LinkPhim" ColumnName="LinkPhim" />
+                <ScalarProperty Name="LinkVideo" ColumnName="LinkVideo" />
+                <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
+                <ScalarProperty Name="diemphim" ColumnName="diemphim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="taikhoans">
+            <EntityTypeMapping TypeName="DataWeb1Model.taikhoan">
+              <MappingFragment StoreEntitySet="taikhoan">
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="Tentk" ColumnName="Tentk" />
+                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TheLoais">
+            <EntityTypeMapping TypeName="DataWeb1Model.TheLoai">
+              <MappingFragment StoreEntitySet="TheLoai">
+                <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
+                <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
+                <ScalarProperty Name="link" ColumnName="link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="f_timkiem" FunctionName="DataWeb1Model.Store.f_timkiem">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DataWeb1Model.f_timkiem_Result">
+                <ScalarProperty Name="MaPhim" ColumnName="MaPhim" />
+                <ScalarProperty Name="TenPhim" ColumnName="TenPhim" />
+                <ScalarProperty Name="TenAnh" ColumnName="TenAnh" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="DienVien" ColumnName="DienVien" />
+                <ScalarProperty Name="LinkPhim" ColumnName="LinkPhim" />
+                <ScalarProperty Name="LinkVideo" ColumnName="LinkVideo" />
+                <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
+                <ScalarProperty Name="diemphim" ColumnName="diemphim" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

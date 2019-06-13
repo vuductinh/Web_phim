@@ -1,0 +1,39 @@
+﻿@model QuanLiWeb.Models.taikhoan
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>login</title>
+</head>
+<body style="background-color:rgb(63,244,208);">
+    <div style="width:500px; margin:0px auto;margin-top:150px; border:1px solid #dddddd;padding:20px;text-align:center;border-color:red;">
+        <h2>LOGIN</h2>
+        @using (Html.BeginForm("login", "Login", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            <div style="padding:20px;">
+                <label style="padding:8px;">
+                    Tài khoản
+                </label>
+                @Html.TextBoxFor(model => model.Tentk, new { @class = "from-control placeholder-no-fix", @type = "text", @autocomplete = "off", @placeholder = "Username" })
+                <br/>
+                @Html.ValidationMessageFor(model => model.Tentk)
+            </div>
+            <div>
+                <label style="padding:8px;">
+                    Mật khẩu
+                </label>
+                <i class="fas fa-lock"></i>
+                @Html.TextBoxFor(model => model.matkhau, new { @class = "from-control placeholder-no-fix", @type = "password", @autocomplete = "off", @placeholder = "Password" })
+                <br />
+                @Html.ValidationMessageFor(model => model.matkhau)
+            </div>
+            <div style="padding:10px;"><input type="submit" value="Đăng nhập" style="background-image:url(../../Content/image/1.jpg)"></div>
+        }
+    </div>
+</body>
+</html>

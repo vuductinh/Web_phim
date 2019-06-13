@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <title>MTA MOVIE</title>
+    <link href="~/Content/css/4cols.css" rel="stylesheet" />
+    <link href="~/Content/css/styleaab3.css" rel="stylesheet" />
+    <link id="pagestyle" type="text/css" href="~/Content/css/styleaab2.css" rel="stylesheet">
+    <script type="text/javascript">var ajaxurl = 'ajax';</script>
+    <script src="~/Content/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/Content/js/vlxxeccb.js?3" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function () {
+            if (!window.MediaSource && $('#server2').length && $('#server1').length) {
+                $('#server2').click()
+            }
+        })
+
+    </script>
+    <script>
+        function swapStyleSheet(sheet) {
+            document.getElementById('pagestyle').setAttribute('href', sheet);
+        }
+    </script>
+</head>
+<body class="section group">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div id="wrapper">
+            <header>
+                <h1 style=" align-content:center;"><img src="~/Content/image/favicon.ico.png" width="360" height="80" alt=""></h1>
+            </header>
+            <div class="clear"></div>
+            <div id="nav">
+                <ul class="menu">
+                    <li><a href="@Url.Action("Index","Home")">MOVIE</a></li>
+                    <li><a href="@Url.Action("Index","TheLoai",new {@matl=1})">HÀNH ĐỘNG</a></li>
+                    <li><a href="@Url.Action("Index","TheLoai",new {@matl=2})">HOẠT HÌNH</a></li>
+                    <li><a href="@Url.Action("Index","TheLoai",new {@matl=3})">HÀI HƯỚC</a></li>
+                    <li><a href="@Url.Action("Index","TheLoai",new {@matl=4})">KINH DỊ</a></li>
+                    <li><a href="@Url.Action("danhgia","Danhgia")">ĐÁNH GIÁ</a></li>
+                    @*<button onclick="swapStyleSheet('~/Content/css/styleaab2.css')" style="color: rgb(0, 0, 0); background-color: rgb(255, 192, 192);width:60px; position: relative; left: 370px;top:9px; will-change:top,left;">Tối</button>*@
+                    <div style="margin-right:10px;margin-top:10px;float:right;">
+                    <form @Url.Action("Index","Home") method="get">
+                        <p>
+                            <input type="text" name="search">
+                            <input type="submit" value="Tìm kiếm" />
+                        </p>
+                    </form>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <div id="wrapper">
+        <footer>
+            <div class="footer-wrap">
+                <p>MTAMOVIE © 2019</p>
+                <p>Made by sinh viên MTA</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>>

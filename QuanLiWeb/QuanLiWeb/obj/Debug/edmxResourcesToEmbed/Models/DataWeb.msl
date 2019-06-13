@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataWeb1ModelStoreContainer" CdmEntityContainer="DataWebEntities">
+    <EntitySetMapping Name="Anhs">
+      <EntityTypeMapping TypeName="DataWeb1Model.Anh">
+        <MappingFragment StoreEntitySet="Anh">
+          <ScalarProperty Name="MaAnh" ColumnName="MaAnh" />
+          <ScalarProperty Name="MaPhim" ColumnName="MaPhim" />
+          <ScalarProperty Name="TenAnh" ColumnName="TenAnh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nhanxetphims">
+      <EntityTypeMapping TypeName="DataWeb1Model.nhanxetphim">
+        <MappingFragment StoreEntitySet="nhanxetphim">
+          <ScalarProperty Name="stt" ColumnName="stt" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="noidung" ColumnName="noidung" />
+          <ScalarProperty Name="maphim" ColumnName="maphim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phims">
+      <EntityTypeMapping TypeName="DataWeb1Model.Phim">
+        <MappingFragment StoreEntitySet="Phim">
+          <ScalarProperty Name="MaPhim" ColumnName="MaPhim" />
+          <ScalarProperty Name="TenPhim" ColumnName="TenPhim" />
+          <ScalarProperty Name="TenAnh" ColumnName="TenAnh" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="DienVien" ColumnName="DienVien" />
+          <ScalarProperty Name="LinkPhim" ColumnName="LinkPhim" />
+          <ScalarProperty Name="LinkVideo" ColumnName="LinkVideo" />
+          <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
+          <ScalarProperty Name="diemphim" ColumnName="diemphim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="taikhoans">
+      <EntityTypeMapping TypeName="DataWeb1Model.taikhoan">
+        <MappingFragment StoreEntitySet="taikhoan">
+          <ScalarProperty Name="stt" ColumnName="stt" />
+          <ScalarProperty Name="Tentk" ColumnName="Tentk" />
+          <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TheLoais">
+      <EntityTypeMapping TypeName="DataWeb1Model.TheLoai">
+        <MappingFragment StoreEntitySet="TheLoai">
+          <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
+          <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
+          <ScalarProperty Name="link" ColumnName="link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="f_timkiem" FunctionName="DataWeb1Model.Store.f_timkiem">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DataWeb1Model.f_timkiem_Result">
+          <ScalarProperty Name="MaPhim" ColumnName="MaPhim" />
+          <ScalarProperty Name="TenPhim" ColumnName="TenPhim" />
+          <ScalarProperty Name="TenAnh" ColumnName="TenAnh" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="DienVien" ColumnName="DienVien" />
+          <ScalarProperty Name="LinkPhim" ColumnName="LinkPhim" />
+          <ScalarProperty Name="LinkVideo" ColumnName="LinkVideo" />
+          <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
+          <ScalarProperty Name="diemphim" ColumnName="diemphim" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

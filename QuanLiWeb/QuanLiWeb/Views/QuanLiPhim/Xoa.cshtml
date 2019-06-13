@@ -1,0 +1,83 @@
+﻿@model QuanLiWeb.Models.Phim
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn muốn xóa?</h3>
+<div id="chitiet1">
+    <h4>Phim</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên phim
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhim)
+        </dd>
+
+        <dt>
+            Ảnh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenAnh)
+        </dd>
+
+        <dt>
+            Nội dung
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            Diễn viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienVien)
+        </dd>
+
+        <dt>
+            Video
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkVideo)
+        </dd>
+
+        <dt>
+            Thể loại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TheLoai.TenTheLoai)
+        </dd>
+
+        <dt>
+            Điểm phim
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diemphim)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <br/>
+            <input type="submit" value="Xóa" class="btn btn-default" />
+            <br/>
+            @Html.ActionLink("Trở về", "HienThiDS")
+        </div>
+    }
+</div>

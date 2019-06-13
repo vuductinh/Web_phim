@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Danhgia";
+}
+@using PagedList.Mvc;
+@model PagedList.PagedList<QuanLiWeb.Models.Phim>
+@using QuanLiWeb.Models;
+<!DOCTYPE html>
+<!-- saved from url=(0028)~/Content/image/home.html -->
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<html>
+<body>
+    <div id="wrapper">
+        <div id="container">
+            <div class="breadcrumbs">
+                <div xmlns:v="http://rdf.data-vocabulary.org/#">
+                    <span typeof="v:Breadcrumb">
+                        <a property="v:title">ĐÁNH GIÁ PHIM | TRANG @Model.PageNumber</a>
+                    </span>
+                    @*<form class="search" method="get">
+                        <input type="text" placeholder="Search..." onfocus="if (this.value == &#39;Search...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.placeholder = &#39;Search...&#39;;}" class="searchTxt">
+                        <input type="submit" value="Search" class="searchBtn">
+                    </form>*@
+                </div>
+            </div>
+            <div class="box">
+                <ul>
+                    @foreach (Phim item in Model)
+                    {
+                        <li class="video-list">
+
+                            <a title=@item.TenPhim href="@Url.Action("chitiet","Home",new { @id=item.MaPhim})">
+                                <img class="video-image" src="~/Content/image/@item.TenAnh" alt=@item.TenPhim>
+                            </a>
+                            <h2 class="video-name">
+                                <a title=@item.TenPhim href="@Url.Action("chitiet","Home",new { @id=item.MaPhim})">
+                                    @item.TenPhim
+                                </a><br />
+                                <a title="" href="#">
+                                    ĐIỂM IMDB:@item.diemphim
+                                </a>
+                            </h2>
+                        </li>
+                    }
+                </ul>
+                <div class="clr"></div>
+                <div class="pagenavi">
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Danhgia", new { page = page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
